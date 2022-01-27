@@ -1,4 +1,30 @@
+---
 - hosts: all
   become: yes
+
   roles: 
     - geerlingguy.docker
+
+  tasks: 
+    - name: Ensure directory docker.service.d exists.
+      file: 
+        path: /etc/systemd/system/docker.service.d
+        state: directory
+        mode: '0755'
+
+    - name: Copy override configuration for docker service. 
+      copy: 
+        src: files/override.conf
+        dest: /etc/systemd/system/docker.service.d/override.conf
+
+    - name: Copy daemon json file
+      copy: 
+        src: files/daemon.json
+        dest: /etc/docker/daemon.json
+
+    - name: Restart docker service
+      systemd: 
+        name: docker.service
+        daemon_reload: yes
+        enabled: yes
+        state: restarted
