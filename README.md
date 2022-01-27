@@ -18,6 +18,13 @@ vagrant plugin install vagrant-vbguest
 ```
 
 
+To simplify installation of docker, we will use the `geerlingguy.docker` role
+
+```
+ansible-galaxy install geerlingguy.docker
+```
+
+
 # Installation 
 
 ```
