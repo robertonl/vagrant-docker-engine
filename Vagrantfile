@@ -10,7 +10,7 @@ Vagrant.configure('2') do |config|
   config.vm.synced_folder "data", "/data"
 
   # set static IP address VM (needed to communicate with docker)
-  config.vm.network 'private_network', ip: '192.168.60.4'
+  config.vm.network 'private_network', ip: '<REPLACE ME>'
   config.vm.network 'forwarded_port', guest: 2375, host: 2375, id: 'dockerd'
   config.vm.provision 'ansible', playbook: 'play.yml'
 end 
