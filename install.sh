@@ -28,6 +28,9 @@ then
   ansible-galaxy install geerlingguy.docker
 fi
 
+# create the data directory if it does not exist
+[ ! -d "data" ] && mkdir data
+
 # Specify IP address for the docker vm 
 read -p "Enter the IP address to be used by the VM running docker: " ip_address
 

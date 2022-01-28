@@ -6,6 +6,7 @@ Vagrant.configure('2') do |config|
     vb.memory = '2048'
     vb.cpus = '2'
   end
+
   # set sync folder between vm and localhost (must exist)
   config.vm.synced_folder "data", "/data"
 
